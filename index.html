@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VitalEdge</title>
+  <meta name="theme-color" content="#5b7cfa" />
+  <link rel="icon" href="icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Splash (auto hides after load) -->
+  <div id="splash">
+    <div class="splash-mark">
+      <div class="splash-orb"></div>
+      <div class="splash-title">VitalEdge</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="app-header glass">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-text">VitalEdge</span>
+    </div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+      <span class="gear">⚙️</span>
+    </button>
+  </header>
+
+  <!-- Tabs -->
+  <main id="main">
+    <!-- HOME -->
+    <section id="homeTab" class="tab active">
+      <!-- Tasks Widget -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Today’s tasks</h2>
+          <small class="muted">Auto-resets at 12:00am</small>
+        </div>
+        <ul id="taskListHome" class="task-list"></ul>
+        <div class="input-row">
+          <input id="newTaskHome" type="text" placeholder="Add a quick task…" />
+          <button class="primary" id="addTaskHomeBtn">Add</button>
+        </div>
+      </div>
+
+      <!-- Calories Widget -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Calories</h2>
+          <small id="calGoalLabel" class="muted"></small>
+        </div>
+        <canvas id="calorieRing" width="220" height="220"></canvas>
+        <p id="calorieSummary" class="summary"></p>
+      </div>
+
+      <!-- Protein Widget -->
+      <div class="card">
+        <div class="card-head">
+          <h2>Protein</h2>
+          <small id="proGoalLabel" class="muted"></small>
+        </div>
+        <canvas id="proteinRing" width="220" height="220"></canvas>
+        <p id="proteinSummary" class="summary"></p>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="tasksTab" class="tab">
+      <div class="card">
+        <div class="card-head">
+          <h2>Manage tasks</h2>
+          <small class="muted">Tap a task to toggle done. Edit or delete using ⋯</small>
+        </div>
+        <ul id="taskListManage" class="task-list"></ul>
+        <div class="input-row">
+          <input id="newTaskManage" type="text" placeholder="New task…" />
+          <button class="primary" id="addTaskManageBtn">Add</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALORIES -->
+    <section id="caloriesTab" class="tab">
+      <div class="card">
+        <div class="card-head">
+          <h2>Add meal</h2>
+          <small class="muted">Log calories & protein — totals track for today</small>
+        </div>
+        <div class="input-row stack-on-mobile">
+          <input id="mealCalories" type="number" inputmode="numeric" placeholder="Calories (e.g., 550)" />
+          <input id="mealProtein" type="number" inputmode="numeric" placeholder="Protein g (e.g., 35)" />
+          <button class="primary" id="addMealBtn">Add meal</button>
+        </div>
+        <ul id="mealList" class="meal-list"></ul>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settingsTab" class="tab">
+      <div class="card">
+        <div class="card-head">
+          <h2>Settings</h2>
+          <small class="muted">Choose your daily goals & behavior</small>
+        </div>
+
+        <div class="setting">
+          <label for="calorieGoal">Calorie goal (1000–6000)</label>
+          <div class="setting-row">
+            <input id="calorieGoal" type="range" min="1000" max="6000" step="50">
+            <span id="calorieGoalVal" class="badge"></span>
+          </div>
+        </div>
+
+        <div class="setting">
+          <label for="proteinGoal">Protein goal (50–400g)</label>
+          <div class="setting-row">
+            <input id="proteinGoal" type="range" min="50" max="400" step="5">
+            <span id="proteinGoalVal" class="badge"></span>
+          </div>
+        </div>
+
+        <div class="setting">
+          <label class="row">
+            <input id="resetMealsDaily" type="checkbox" />
+            <span>Reset meals each midnight</span>
+          </label>
+        </div>
+
+        <button class="primary wide" id="saveSettingsBtn">Save settings</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav glass">
+    <button class="nav-btn" data-tab="tasksTab">Tasks</button>
+    <button class="nav-btn active" data-tab="homeTab">Home</button>
+    <button class="nav-btn" data-tab="caloriesTab">calories</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
