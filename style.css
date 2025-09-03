@@ -1,0 +1,156 @@
+:root{
+  --bg:#0b0e14;
+  --surface:#0f1320;
+  --card:#11162a;
+  --glass:rgba(255,255,255,0.06);
+  --text:#e8ebf7;
+  --muted:#9aa5c1;
+
+  --accentA:#5b7cfa; /* blue */
+  --accentB:#8c5bfa; /* purple */
+
+  --ringTrack:#1e2438;
+  --ringShadow:rgba(0,0,0,0.25);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1000px 500px at 100% -20%, rgba(139,91,250,0.22), transparent 60%),
+              radial-gradient(900px 500px at -10% 120%, rgba(91,124,250,0.18), transparent 60%),
+              var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Splash */
+#splash{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(91,124,250,0.1), rgba(140,91,250,0.08)) , var(--bg);
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#splash.hidden{opacity:0; visibility:hidden}
+.splash-mark{display:flex; flex-direction:column; align-items:center; gap:18px}
+.splash-orb{
+  width:84px; height:84px; border-radius:24px;
+  background: conic-gradient(from 220deg, var(--accentA), var(--accentB));
+  box-shadow:0 12px 30px rgba(142,104,255,.35), inset 0 2px 10px rgba(0,0,0,.25);
+}
+.splash-title{font-weight:700; font-size:22px; letter-spacing:.5px}
+
+/* Header */
+.app-header{
+  position:sticky; top:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px;
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.glass{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));}
+.brand{display:flex; align-items:center; gap:10px}
+.brand-mark{
+  width:18px; height:18px; border-radius:6px;
+  background: linear-gradient(135deg, var(--accentA), var(--accentB));
+  box-shadow: 0 4px 14px rgba(111,95,255,.45);
+}
+.brand-text{font-weight:700}
+
+.icon-btn{
+  appearance:none; border:none; background:transparent; color:var(--text);
+  font-size:20px; cursor:pointer; padding:6px 10px; border-radius:10px;
+}
+.icon-btn:active{transform:scale(.98)}
+
+/* Main */
+#main{padding:16px 16px 96px}
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  padding:16px;
+  margin:14px 0;
+  box-shadow: 0 10px 30px var(--ringShadow);
+}
+.card-head{display:flex; align-items:baseline; justify-content:space-between; gap:8px}
+h2{margin:0 0 8px 0; font-size:18px}
+.muted{color:var(--muted)}
+.summary{margin:10px 0 0; font-weight:600; letter-spacing:.2px}
+
+/* Lists */
+.task-list, .meal-list{list-style:none; padding:0; margin:8px 0 0}
+.task-list li, .meal-list li{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; padding:12px; border-radius:12px; margin:8px 0;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+}
+.task-text{flex:1}
+.task-done{opacity:.55; text-decoration:line-through}
+.row{display:flex; align-items:center; gap:10px}
+.dot{
+  width:10px; height:10px; border-radius:50%;
+  background: linear-gradient(135deg, var(--accentA), var(--accentB));
+  box-shadow:0 0 0 3px rgba(111,95,255,.18);
+}
+
+/* Inputs & Buttons */
+.input-row{display:flex; gap:8px; margin-top:10px}
+.stack-on-mobile{flex-wrap:wrap}
+input[type="text"], input[type="number"], input[type="range"]{
+  flex:1; min-width:0;
+  background: rgba(255,255,255,.06);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:12px 12px;
+  outline:none;
+}
+input::placeholder{color:#98a1bd}
+
+button{cursor:pointer}
+.primary{
+  background: linear-gradient(135deg, var(--accentA), var(--accentB));
+  border:none; color:white; font-weight:700;
+  padding:12px 16px; border-radius:12px;
+  box-shadow: 0 8px 18px rgba(111,95,255,.35);
+}
+.primary:active{transform:translateY(1px)}
+.wide{width:100%}
+
+/* Settings */
+.setting{margin:14px 0}
+.setting-row{display:flex; align-items:center; gap:12px}
+.badge{
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px;
+  background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+}
+
+/* Rings */
+canvas{display:block; margin:8px auto 6px;}
+
+/* Bottom Nav */
+.bottom-nav{
+  position:fixed; left:0; right:0; bottom:0; z-index:90;
+  display:flex; gap:8px; padding:10px;
+  border-top:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(10px);
+}
+.nav-btn{
+  flex:1; padding:10px 12px; border-radius:12px; border:none;
+  background: rgba(255,255,255,.05); color:var(--text); font-weight:600;
+}
+.nav-btn.active{
+  background: linear-gradient(135deg, var(--accentA), var(--accentB));
+  box-shadow: 0 8px 18px rgba(111,95,255,.35);
+}
+
+/* Utilities */
+.hidden{display:none !important}
+
+/* Better tap targets */
+button, input{touch-action:manipulation}
